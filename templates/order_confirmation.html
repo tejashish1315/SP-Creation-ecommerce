@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'main' %}
+
+<div class="container mt-4">
+   <div class="alert alert-success">
+        <h4>Payment Successful!</h4>
+        <p>Thank you, {{ username }}!</p>
+        <p>Your payment for Order <strong>#{{ order_id }}</strong> was completed successfully.</p>
+        <p>We will ship your items soon. You’ll get a tracking notification shortly.</p>
+        <p><strong> KEEP SHOPPING IN SP CREATION.</strong></p>
+   </div>
+
+  <a href="{% url 'index' %}" class="btn btn-primary">Continue Shopping</a>
+</div>
+
+
+
+
+
+{% endblock 'main' %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'main' %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-4 p-3 mx-auto shadow">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-2">
+                    <label for="line1">Address Line 1:</label>
+                    <input type="text" id="line1" class="form-control" name="line1" required><br>
+                </div>
+                <div class="mb-2">
+                    <label for="line2">Address Line 2:</label>
+                    <input type="text" id="line2" class="form-control" name="line2"><br> 
+                </div>
+                <div class="mb-2">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" class="form-control" name="city" required><br>
+                </div>
+                <div class="mb-2">
+                <label for="state">State:</label>
+                <input type="text" id="state" class="form-control" name="state" required><br>
+                </div>
+                <div class="mb-2">
+                <label for="postal_code">Postal Code:</label>
+                <input type="text" id="postal_code" class="form-control" name="postal_code" required><br>
+                </div>
+                <div class="mb-2">
+                <label for="country">Country:</label>
+                <input type="text" id="country" class="form-control" name="country" required><br>
+                </div>
+                <div class="mb-3">
+                <button type="submit" class="btn btn-danger">Proceed to Payment</button>
+                </div>
+                </form>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+{% endblock 'main' %}

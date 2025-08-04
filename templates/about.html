@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'main' %}
+  <h3 class="text-center bg-light text-danger shadow p-3"><i>SP CREATION</i></h3>
+
+  <p><i>If you would like to experience the best of online shopping for men, women and kids
+     in India, you are at the right place. SP Creation is the ultimate destination for fashion 
+     and lifestyle, being host to clothing and jewellery.</i></p>
+  
+  <p><i>It is time to redefine your style statement with our treasure-trove of trendy items.
+     Our online store brings you the latest in designer products straight out of fashion houses.
+      You can shop online at SP Creation from the comfort of your home and get your favourites delivered right to your doorstep.</i></p>
+
+    <div class="container">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for item in items %}
+                    <div class="carousel-item active">
+                    <img src="{{product.pimage.url}}" class="d-block w-70 align-center" alt="..."height="500px">
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+{% endblock  %}
+ 

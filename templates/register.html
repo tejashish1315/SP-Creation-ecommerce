@@ -1,0 +1,62 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=r, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'asset\css\bootstrap.min.css' %}"/>
+</head>
+<body>
+    <a href="\">Go to Homepage</a>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-4 p-3 mx-auto shadow">
+                <h2 class="text-center">Registration</h2>
+                {% if errmsg %}
+                  <div class="alert alert-danger">
+                    {{errmsg}}
+                  </div>
+                {% endif %}
+                {% if success %}
+                  <div class="alert alert-success">
+                    {{success}}
+                  </div>
+                {% endif %}
+                <form method="post" action="/register">
+                  {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="input1" class="form-label">Username</label>
+                        <input type="text" name="uname" class="form-control" id="input1" placeholder="Enter username">
+                      </div><!--username-->
+                      <div class="mb-3">
+                        <label for="input2" class="form-label">Email Id:</label>
+                        <input type="email" name="umail" class="form-control" id="input2" placeholder="Enter a valid email address">
+                      </div><!--email-->
+                      <div class="mb-3">
+                        <label for="input3" class="form-label">Password</label>
+                        <input type="password" name="upass" class="form-control" id="input3" placeholder="Enter password">
+                      </div><!--PASSWORD-->
+                      <div class="mb-3">
+                        <label for="input4" class="form-label">Confirm password</label>
+                        <input type="password" name="ucpass" class="form-control" id="input4" placeholder="Enter password again">
+                      </div><!--confirm password-->
+                      <div class="mb-3">
+                        <input type="submit" class="btn btn-info" value="Register">
+                        Already User? <a href ="/login" style="text-decoration:none;">Login</a>
+                      </div><!--button-->
+
+
+
+
+                </form><!--form end-->
+
+            </div><!--col class end-->
+
+        </div><!--row class end-->
+
+    </div><!--container class end-->
+
+    <script src="{% static 'asset\js\bootstrap.min.js' %}"></script>
+    
+</body>
+</html>

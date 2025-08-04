@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'main' %}
+
+<!--main contain start-->
+<div class="row mt-3">
+    <!-- Sidebar Filter -->
+    <div class="col-md-4">
+        <h5>Category</h5>
+        <hr>
+        <p><a href="/catfilter/1" class="anchor">Mens Wear and Jwellary</a></p>
+        <p><a href="/catfilter/2" class="anchor">Women Wear and jwellary</a></p>
+        <p><a href="/catfilter/3" class="anchor">Kids Wear and jwellary</a></p>
+        
+        <hr>
+        <h5>Filter By Price Range</h5>
+       <form action="/range" method="get">
+            <div class="mb-3">
+                <label for="Input1" class="form-label">Min value:</label>
+                <input type="number" class="form-control" id="Input1" name="min" placeholder="Minimum value (Rs.99 and up)">
+            </div>
+            <div class="mb-3">
+                <label for="Input2" class="form-label">Max value:</label>
+                <input type="number" class="form-control" id="Input2" name="max" placeholder="Maximum value">
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-warning" value="Filter">
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-8">
+        <!-- Clothing Products -->
+        <h5>Clothing Products</h5>
+        <hr>
+        <div class="row">
+            {% for x in product_cloths %}
+            <div class="col-md-4 mt-3">
+                <div class="card" style="width: 100%;""height:150px;">
+                    <img src="{{ x.pimage.url }}" class="card-img-top" alt="..." width="100%" height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ x.name }}</h5>
+                        {% if x.cat == 1 %}
+                            <p class="card-text">MENS WEAR</p>
+                        {% elif x.cat == 2 %}
+                            <p class="card-text">WOMEN WEAR</p>
+                        {% else %}
+                            <p class="card-text">KIDS WEAR</p>
+                        {% endif %}
+                       <a href="{% url 'pcdetails' x.id %}" class="btn btn-warning">See product</a>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Jwellary Products -->
+        <h5 class="mt-4">Jewellery Products</h5>
+        <hr>
+        <div class="row">
+            {% for x in product_jwellarys %}
+            <div class="col-md-4 mt-3">
+                <div class="card" style="width: 100%;" "height:150px;">
+                    <img src="{{ x.pimage.url }}" class="card-img-top" alt="..." width="100%" height="auto">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ x.name }}</h5>
+                        {% if x.cat == 4 %}
+                            <p class="card-text">MENS JWELLARY</p>
+                        {% elif x.cat == 5 %}
+                            <p class="card-text">WOMEN JWELLARY</p>
+                        {% else %}
+                            <p class="card-text">KIDS JWELLARY</p>
+                        {% endif %}
+                        <a href="/pjdetails/{{x.id}}" class="btn btn-warning">See product</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!--main contain end-->
+{% endblock 'main' %}
